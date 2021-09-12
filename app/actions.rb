@@ -58,6 +58,22 @@ get '/logout' do
 
 end
 
+get '/finstagram_posts/new' do
+
+  @finstagram_post = FinstagramPost.new
+
+  erb(:"finstagram_posts/new")
+
+end
+
+get '/finstagram_posts/:id' do
+
+@finstagram_post = FinstagramPost.find(params[:id])
+
+erb(:"finstagram_posts/show")
+
+end
+
 
 post '/signup' do
 
@@ -109,12 +125,27 @@ end
       @error_message = "Login failed."
 
       erb(:login)
+    end
 
   end
 
+  post '/finstagram_posts' do
+
+    photo_url = params[:photo_url]
+
+    @finstagram_post = FinstagramPost.new({ photo_url: photo_url, user_id: current_user.id })
+
+    if @finstagram_post.save
+
+      redirect(to('/'))
+
+    else
+
+    erb(:"finstagram_posts/new")
+    
+  end
+
 end
-
-
 
 
 
