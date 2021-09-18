@@ -141,11 +141,26 @@ end
 
     else
 
-    erb(:"finstagram_posts/new")
+      erb(:"finstagram_posts/new")
+    end
     
   end
 
-end
+  post '/comments' do
+
+    text = params[:text]
+
+    finstagram_post_id = params[:finstagram_post_id]
+
+    comment = Comment.new({ text: text, finstagram_post_id: finstagram_post_id, user_id: current_user.id })
+
+    comment.save
+
+    redirect(back)
+
+  end
+
+
 
 
 

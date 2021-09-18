@@ -28,3 +28,7 @@ a.photo{
 a.photo.hover{
     padding: 10px;
 }
+
+.likes{
+    margin-bottom: 5px;
+}

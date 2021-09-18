@@ -93,6 +93,7 @@ main {
 .actions {
   display: flex;
   align-items: baseline;
+  flex-direction: column-reverse;
 }
 
 .actions button.user-like {
